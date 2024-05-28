@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6$bpy^e^k5hy*s(uwg^#j#k11nea^k%adm*94$@zqg8o9bm!0z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mindmatch-pzqlx45k.b4a.run',]
 
 
 # Application definition

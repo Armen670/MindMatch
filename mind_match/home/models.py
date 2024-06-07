@@ -1,15 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+
 # Create your models here.
 
 class Profile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=50,blank=False)
-    second_name = models.CharField(max_length=50,blank=False)
-    desc = models.CharField(max_length=1000,blank=False)
-    drink = models.BooleanField(blank=False)
-    kids = models.BooleanField(blank=False)
-    smoke = models.BooleanField(blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    desc = models.CharField(max_length=1000, blank=False,null=True)
+    drink = models.BooleanField(blank=False,null=True)
+    kids = models.BooleanField(blank=False,null=True)
+    smoke = models.BooleanField(blank=False,null=True)
+
 
 def get_image_filename(instance, filename):
     title = instance.user.pk
@@ -17,5 +18,5 @@ def get_image_filename(instance, filename):
 
 
 class Images(models.Model):
-    user = models.ForeignKey(User,default=None,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=get_image_filename,verbose_name='Image')
+    user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=get_image_filename, verbose_name='Image')

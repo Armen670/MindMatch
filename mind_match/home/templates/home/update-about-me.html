@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+<meta charset="UTF-8">
+<title>
+    Update About-me
+</title>
+{% block body %}
+<div>
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" >Update</button>
+    </form>
+</div>
+<div>
+    <a href="{% url 'home:about-me' %}">
+        Back to about-me
+    </a>
+</div>
+{% endblock %}

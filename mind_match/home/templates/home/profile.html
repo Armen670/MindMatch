@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block body %}
+<h1>
+    Profile Register
+</h1>
+<form method="post" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register" >
+    <!--
+        <p>
+        <label for="asd" >asd:</label>
+        <input id = "asd" name="asd" required >
+    </p>
+    -->
+</form>
+{% endblock %}

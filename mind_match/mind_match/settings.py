@@ -125,3 +125,5 @@ LOGIN_REDIRECT_URL = reverse_lazy("home:about-me")  # после входа
 LOGIN_URL = reverse_lazy(
     "home:login")  # если идёт обращение к данным для которых нужен вход, а вы не аутоинтефицированы
 # old_value = '/admin/'
+
+CSRF_TRUSTED_ORIGINS = ['https://*.b4a.run','https://*.127.0.0.1']

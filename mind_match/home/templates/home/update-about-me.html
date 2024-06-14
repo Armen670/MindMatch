@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
-<meta charset="UTF-8">
-<title>
-    Update About-me
-</title>
+
+{% block head %}
+Update
+{% endblock %}
+
 {% block body %}
-<div>
-    <form method="post" enctype="multipart/form-data" >
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" >Update</button>
-    </form>
-</div>
-<div>
-    <a href="{% url 'home:about-me' %}">
-        Back to about-me
-    </a>
-</div>
+<h1 class="text-primary m-3">
+     Update
+</h1>
+<div class="form-group fs-1 text-primary">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 class="text-primary m-3">User Info</h2>
+    {{ user_form.as_p }}
+    <h2 class="text-primary m-3">Profile Info</h2>
+    {{ profile_form.as_p }}
+    <h2 class="text-primary m-3">Image:</h2>
+    {{ image_form.as_p }}
+    <button type="submit">Update Profile</button>
+</form>
+    <div>
 {% endblock %}

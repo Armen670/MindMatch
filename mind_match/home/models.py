@@ -11,12 +11,11 @@ class Profile(models.Model):
     kids = models.BooleanField(blank=False,null=True)
     smoke = models.BooleanField(blank=False,null=True)
 
-
 def get_image_filename(instance, filename):
     title = instance.user.pk
-    return "post_images/%d/%s" % (title, filename)
+    return "%d/%s" % (title, filename)
 
-
-class Images(models.Model):
+class Image(models.Model):
     user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    title = models.CharField(max_length = 200,default='default_title')
     image = models.ImageField(upload_to=get_image_filename, verbose_name='Image')

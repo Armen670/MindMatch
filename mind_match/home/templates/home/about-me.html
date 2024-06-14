@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}
+{% block head %}
 About me
 {% endblock %}
 
@@ -34,6 +34,48 @@ About me
     Kids: {{ user.profile.kids }}
 </p><p>
     Smoke: {{ user.profile.smoke }}
+</p>
+    Images:
+    {% if user.image_set.all %}
+<p>
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+            {% for image in user.image_set.all %}
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %} aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+  </div>
+  <div class="carousel-inner">
+
+      {% for image in user.image_set.all %}
+    <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+        <div class="d-flex justify-content-center">
+      <img src="{{ image.image.url }}" class="d-block w-75" alt="{{ image.title }}">
+        </div>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{ forloop.counter }} image</h5>
+        <p>{{ image.title }}</p>
+          <form action="{% url 'home:delete-image' image.id %}" method="post">
+        {% csrf_token %}
+<button class="btn btn-primary" type="submit" >Delete</button>
+    </form>
+      </div>
+    </div>
+      {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    {% else %}
+    <a>
+        There is No image
+    </a>
+    {% endif %}
 </p>
 {% else %}
 <h2>

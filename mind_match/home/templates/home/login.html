@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Login
+{% block head %}
+Login Page
 {% endblock %}
 
 {% block body %}
+<div class="form-group fs-1 text-primary">
 <form method="post" >
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" >Login</button>
+    <button class="btn btn-primary d-grid gap-2 col-6 mx-auto" type="submit" >Login</button>
 </form>
+<div>
 {% endblock %}
